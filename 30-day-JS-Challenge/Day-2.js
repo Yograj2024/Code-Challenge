@@ -36,8 +36,6 @@ let n1=98;
 let n3=2;
 console.log(n2-=n);  // output :- -96
 
-
-
 /*  Activity 3: Assignment Operation  */
 // Task 8: WAP to compare two no using <,>
 let x=78;
@@ -82,7 +80,7 @@ if (_n==_n1 && _n==_n2) {
 if (_n===_n1 || _n===_n2) {
     console.log(`_n,_n1,_n2 are equal acording to the type`);
 }else{
-
+    console.log("The value is same but the type is not same.");
 };
 
 
