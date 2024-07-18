@@ -73,22 +73,24 @@ if (_n===_n2){ //  also check type
 
 /* Logical Operators */
 // Task 11: wap use the && oprator to combine two conditions
-if (_n==_n1 && _n==_n2) {
+if (_n==_n1 && _n==_n2) {  //  All conditions must be true
     console.log(`_n,_n1,_n2 are equal acording to the value`);
 };
 
-if (_n===_n1 || _n===_n2) {
-    console.log(`_n,_n1,_n2 are equal acording to the type`);
+// Task 12: wap use the || oprator to combine two conditions
+if (_n==_n1 || _n===_n2) {  // One of the conditions must be true
+    console.log(`_n,_n1,_n2 are equal acording to the vaue`);
 }else{
     console.log("The value is same but the type is not same.");
 };
 
+// Task 13: wap use the ! oprator to combine two conditions
+if(_n==_n2){
+    if (_n!==_n2) {
+        console.log("Values ​​of _n and _n2 are same but their type is not same.");
+    };
+};
 
-
-
-
-
-
-
-
-
+/* Activity 5: Ternary Operator */
+// Task 14 :- wap use the ()?_____:______
+(_n==_n2)?console.log('value are equal'):console.log('type are not equal');
