@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-9 of 30-Day JS Challenge</title>
+    <style>
+        .div{
+            margin: 0 0 40px 20px;
+        }
+        #box{
+            height: 100px;
+            width: 270px;
+            background-color: blue;
+        }
+        #btn2{
+            margin-bottom: 27px;
+        }
+        #btn4{
+            height: 50px;
+            width: 120px;
+            background-color: yellow;
+            border: 1px solid green;
+        }
+        .css{
+            color: red;
+            border: 2px solid yellow;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <p id="para1"> 1-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aut sapiente soluta quae quasi amet facilis blanditiis minima atque, nam debitis esse porro rem? Nemo, fugiat! Tenetur excepturi repellat cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere atque distinctio cupiditate culpa incidunt? Labore iste nulla, numquam illo deserunt expedita excepturi! Tenetur, ipsum! Saepe aliquid reiciendis doloremque laboriosam? Culpa minima impedit id nostrum ullam labore maxime non nesciunt aliquam.</p>
+        <button id="btn1">Change text 1</button>
+    </div>
+    <div class="div">
+        <div id="box" class="blue"></div><br>
+        <button id="btn7">change color</button>
+    </div>
+    <div class="new div">
+        <button id="btn2">Add New Div</button>
+    </div>
+    <button id="btn4" class="div">Click and<br> Remove me</button>
+    <div class="div">
+        <ul id="list">
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+        <button id="btn3">Add new li</button>
+        <button id="btn8">Remove  li</button>
+    </div>
+
+    <div  class="div">
+        <img src="./download.jfif" alt="" id="image"><br><br>
+        <button id="btn5">change img</button>
+        <button id="btn9">old img</button>
+    </div>
+
+    <div class="div">
+        <p id="change" class="nocss">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quisquam necessitatibus ab nisi ipsa accusamus vero doloremque laudantium, suscipit eius, voluptatem nesciunt aliquam mollitia incidunt autem. Reprehenderit quis vel eveniet?
+        </p>
+        <button id="btn6">Change</button>
+    </div>
+
+    <div class="div mouse">
+        <p> mouse over and <br> see border color</p>
+    </div>
+
+    <script>
+        // Activity 1: Selecting and Manipulating 
+        // Task 1:
+        let clicked=false;
+        let clicked2=false;
+        let text=document.getElementById("para1").innerText;
+        document.getElementById("btn1").addEventListener("click",()=>{
+            if(!clicked){
+                document.getElementById("para1").innerText="kjdkfjieu";
+                clicked=true;
+            }else{
+                document.getElementById("para1").innerText=text;
+                clicked=false;
+            }
+        });
+
+    // Task 2:
+    document.getElementById("btn7").addEventListener("click",()=>{
+        let div=document.getElementsByClassName("blue"); // return html collection
+        if(div[0].style.backgroundColor==="red"){
+            div[0].style.backgroundColor="blue";
+        }else{
+            div[0].style.backgroundColor="red";
+        }
+    });
+
+
+    // Activity 2: Create ans Append
+    // Task 3:
+    document.getElementById("btn2").addEventListener("click",()=>{
+        let place=document.getElementsByClassName("new");
+        let newDiv=document.createElement("div");
+        newDiv.textContent="Nemo, fugiat! Tenetur excepturi repellat cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere atque distinctio cupiditate culpa incidunt? Labore iste nulla, numquam illo deserunt expedita excepturi! Tenetur, ipsum! Saepe aliquid reiciendis doloremque laboriosam? Culpa minima impedit id nostrum ullam labore maxime non nesciunt aliquam.";
+        place[0].appendChild(newDiv);
+    });
+
+    // Task 4:
+    document.getElementById("btn3").addEventListener("click",()=>{
+        let li_value=prompt("enter the li value ");
+        let li=document.createElement("li");
+        li.textContent=li_value;
+        let list=document.getElementById("list");
+        list.appendChild(li);
+    });
+
+
+    // Activity 3:- Reoving Element.....
+    // Task 5:
+    document.getElementById("btn4").addEventListener("click",()=>{
+        document.getElementById("btn4").remove();
+    });
+
+    // Task 6:
+    document.getElementById("btn8").addEventListener("click",()=>{
+        // let item=document.getElementsByTagName("li");
+        // let len=item.length;
+        // item[len-1].remove();
+        let list=document.getElementById("list");
+        list.removeChild(list.lastChild);
+    });
+
+
+    // Activity 7:- Modifying Attribute and classess....
+    // Task 7:
+    document.getElementById("btn5").addEventListener("click",()=>{
+        let image=document.getElementById("image");
+        image.setAttribute("src","./images.jfif");
+    });
+    document.getElementById("btn9").addEventListener("click",()=>{
+        let image=document.getElementById("image");
+        image.setAttribute("src","./download.jfif");
+    });
+
+    // Task 8: 
+    document.getElementById("btn6").addEventListener("click",()=>{
+    let change=document.getElementById("change");
+   /* .classList is a read-only property of DOM elements in JavaScript that provides a           
+  convenient way to manipulate the classes of an HTML element. It returns a DOMTokenList object 
+   representing the list of classes on the element. */
+     
+        
+        change.classList.remove("noscss")
+        change.classList.add("css");
+        alert("After your click we remove the nocss class and add css class thats by you see this change");
+    });
+
+    // Task 9:
+    {
+        "NOTE ==>  jub bhi html collection returen hota hai to us par action perform karne ke liye use itorate karna hota hai "
+
+        " isliye  document.getElementsByClassName('mouse')[0] me [0] likha gya hia kyo ki html collection array ki form me hota hai "
+    }
+    document.getElementsByClassName("mouse")[0].addEventListener("mouseover", function() {
+        this.style.cssText = 'border:2px solid red; padding:10px;'; 
+    });
+
+    document.getElementsByClassName("mouse")[0].addEventListener("mouseout", function() {
+        this.style.cssText = 'border:none; padding:none'; 
+    });
+
+    </script>
+</body>
+</html>
